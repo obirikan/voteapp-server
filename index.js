@@ -17,6 +17,7 @@ const db=require('./models')
 app.use(cors())
 app.use(bodyParser.json())
 app.use('/api/auth',routes.auth)
+
 //ERROR HANDLERS
 app.use(handle.notfound)
 app.use(handle.error)

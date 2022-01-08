@@ -5,10 +5,12 @@ exports.register= async (req,res,next)=>{
      const user= await db.user.create(req.body);
      const {id,username}=user;
 
-     res.json({id,username})
+     res.status(201).json({id,username})
      
-
     }catch(err){
+        if(err.code === 11000){
+           err.message='sorry username has already been taken'
+        }
         next(err)
         
     }
@@ -23,9 +25,10 @@ exports.login= async (req,res,next)=>{
         if(valid){
             res.json({id,username})
         }else{
-            throw new Error('invavlid username/password')
+            throw new Error()
         }
     }catch(err){
+        err.message='invalid username/password'
         next(err)
     }
 }
