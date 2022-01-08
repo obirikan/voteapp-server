@@ -11,12 +11,11 @@ const userSchema=new mongoose.Schema({
         type:String,
         required:true
     },
-    poll:[{type:mongoose.Schema.Types.ObjectId,ref:'polls'}],
-
     created:{
         type:Date,
         default:Date.now
-    }
+    },
+    poll:[{type:mongoose.Schema.Types.ObjectId,ref:'polls'}],
 })
 
 userSchema.pre('save', async function(next){
@@ -32,7 +31,7 @@ userSchema.pre('save', async function(next){
     }
 })
 
-userSchema.methods.comparePassword =async function(attempt,next){
+userSchema.methods.comparePassword =async function (attempt,next){
     try{
       return await bcrypt.compare(attempt,this.password)
     }catch(err){
@@ -40,4 +39,4 @@ userSchema.methods.comparePassword =async function(attempt,next){
     }
 }
 
-module.exports=mongoose.model('user',userSchema)
+module.exports=mongoose.model('users',userSchema)
