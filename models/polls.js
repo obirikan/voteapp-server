@@ -16,11 +16,11 @@ const pollSchema=new mongoose.Schema({
     },
     question:String,
     options:[optionSchema],
-    voted:[{
-    type:mongoose.Schema.Types.ObjectId,
-    ref:'user'}],
+    voted:[{type:mongoose.Schema.Types.ObjectId,ref:'user'}],
     created:{
     type:Date,
     default:Date.now
     }
 })
+
+module.exports =mongoose.model('polls',pollSchema)

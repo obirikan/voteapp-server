@@ -11,9 +11,8 @@ const userSchema=new mongoose.Schema({
         type:String,
         required:true
     },
-    polls:[{
-        type:[{type:mongoose.Schema.Types.ObjectId,ref:'polls'}]
-    }],
+    poll:[{type:mongoose.Schema.Types.ObjectId,ref:'polls'}],
+
     created:{
         type:Date,
         default:Date.now
@@ -33,7 +32,7 @@ userSchema.pre('save', async function(next){
     }
 })
 
-userSchema.method.comparePassword =async function(attempt,next){
+userSchema.methods.comparePassword =async function(attempt,next){
     try{
       return await bcrypt.compare(attempt,this.password)
     }catch(err){

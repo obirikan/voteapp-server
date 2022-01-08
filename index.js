@@ -3,7 +3,7 @@ const express=require('express')
 const app=express()
 const cors=require('cors')
 const bodyParser=require('body-parser')
-const routes=require('./routes')
+const route=require('./routes')
 
 const handle=require('./handlers')
 
@@ -16,7 +16,7 @@ const db=require('./models')
 
 app.use(cors())
 app.use(bodyParser.json)
-app.use('/api/auth',routes.auth)
+app.use('/api/auth',route.auth)
 //ERROR HANDLERS
 app.use(handle.notfound)
 app.use(handle.error)
