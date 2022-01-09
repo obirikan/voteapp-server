@@ -1,11 +1,15 @@
 const db=require('../models')
+const jwt=require('jsonwebtoken')
 
 exports.register= async (req,res,next)=>{
     try{
      const user= await db.user.create(req.body);
      const {id,username}=user;
+     
+    const token=jwt.sign({id,username},process.env.SECRET )
+    
 
-     res.status(201).json({id,username})
+     res.status(201).json({id,username,token})
      
     }catch(err){
         if(err.code === 11000){
@@ -23,7 +27,9 @@ exports.login= async (req,res,next)=>{
 
     const valid= await user.comparePassword(req.body.password)
         if(valid){
-            res.json({id,username})
+            
+    const token=jwt.sign({id,username},process.env.SECRET )
+            res.json({id,username,token})
         }else{
             throw new Error()
         }
