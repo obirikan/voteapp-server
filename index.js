@@ -16,6 +16,7 @@ const db=require('./models')
 app.use(cors())
 app.use(bodyParser.json())
 app.use('/api/auth',routes.auth)
+app.use('/api/poll',routes.poll)
 
 //ERROR HANDLERS
 app.use(handle.notfound)
