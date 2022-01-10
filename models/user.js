@@ -39,4 +39,4 @@ userSchema.methods.comparePassword =async function (attempt,next){
     }
 }
 
-module.exports=mongoose.model('users',userSchema)
+module.exports=mongoose.model('user',userSchema)
