@@ -1,8 +1,10 @@
 const mongoose=require('mongoose');
-
+//at first it was "option:String"
 
 const optionSchema=new mongoose.Schema({
-    option:String,
+    option:{
+      type:String
+    },
     votes:{
         type:Number,
         default:0
