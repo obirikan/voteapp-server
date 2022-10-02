@@ -12,9 +12,11 @@ app.get('/',(req,res)=>{
 })
 
 const db=require('./models')
-
+//enables you to overcome cors errors
 app.use(cors())
+//enables you to make post requests 
 app.use(bodyParser.json())
+//route handlers
 app.use('/api/auth',routes.auth)
 app.use('/api/poll',routes.poll)
 
