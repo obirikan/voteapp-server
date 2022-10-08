@@ -1,4 +1,5 @@
 const db=require('../models')
+
 //show all polls in database and users
 exports.showpoll=async (req,res,next)=>{
   try{
@@ -79,7 +80,7 @@ exports.deletepoll=async (req,res,next)=>{
          const poll= await db.polls.findById(pollId)
 
          if(!poll) throw new Error('no poll found')
-         
+         //validating
          if(poll.user.toString() ==! userId){
            throw new Error('unaurthorized access')
          }
