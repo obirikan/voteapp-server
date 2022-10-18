@@ -11,7 +11,7 @@ exports.showpoll=async (req,res,next)=>{
    next(err)
   }
 }
-//getting user poll
+//getting user's polls
 exports.userpolls=async (req,res,next)=>{
  try{
      const {id}=req.decoded
