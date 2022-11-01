@@ -1,6 +1,6 @@
 const db=require('../models')
 const jwt=require('jsonwebtoken')
-
+///register auth
 exports.register= async (req,res,next)=>{
     try{
      const user= await db.user.create(req.body);
@@ -20,7 +20,7 @@ exports.register= async (req,res,next)=>{
         
     }
 }
-
+//login auth
 exports.login= async (req,res,next)=>{
     try{
     const user= await db.user.findOne({username:req.body.username})
