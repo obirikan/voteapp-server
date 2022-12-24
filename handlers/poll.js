@@ -1,6 +1,6 @@
 const db=require('../models')
 
-//show all polls in database and users
+//show all polls in database and users and populates
 exports.showpoll=async (req,res,next)=>{
   try{
    const polls=await db.polls.find().populate('user',['username','id'])
